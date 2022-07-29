@@ -26,3 +26,16 @@
 -  Merge the check constraint into data type definition
       -   `eye_color ENUM('BR', 'BL', 'GR'), `
 
+
+
+- Foreign key constraint: This constrains the values of the person_id column in the favorite_food table to include only values found in the person table. 
+
+               
+               
+          CREATE TABLE favorite_food
+           (person_id SMALLINT UNSIGNED,
+           food VARCHAR(20),
+           CONSTRAINT pk_favorite_food PRIMARY KEY (person_id, food),
+           CONSTRAINT fk_fav_food_person_id FOREIGN KEY (person_id)
+           REFERENCES person (person_id)
+            );
