@@ -1,0 +1,3 @@
+- `\l`: List all database
+- `\pset pager off`: Off pager (when command not recognised)
+- `\c database_name`: Connection is particular to database. Thus, this command will close old connection and acquire new connection using the specified database.
