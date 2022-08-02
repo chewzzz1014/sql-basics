@@ -4,7 +4,7 @@
 
 SELECT id, occurred_at, total_amt_usd
 FROM orders
-SORT BY occurred_ar
+ORDER BY occurred_ar
 LIMIT 10
 
 
@@ -12,7 +12,7 @@ LIMIT 10
 
 SELECT id, account_id, total_amt_usd
 FROM orders
-SORT BY total_amt_usd DESC
+ORDER BY total_amt_usd DESC
 LIMIT 5
 
 
