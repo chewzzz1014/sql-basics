@@ -26,7 +26,7 @@
        LIMIT 12;
 
 ## ORDER BY...
-- `ORDER BY column_name`: sort our results using the data in any column
+- `ORDER BY column_name`: sort results into ascending order using the data in any column
 - Must appear `after FROM` and before `LIMIT`
 
        SELECT *
