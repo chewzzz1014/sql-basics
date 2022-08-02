@@ -13,5 +13,14 @@
 ## SELECT ... FROM ...
 - `SELECT`: column(s) you want to be given the data for.
 - `FROM`: which table(s) you want to select the columns. Notice the columns need to exist in this table.
-- SELECT * FROM orders : Select all columns from table orders
+- `SELECT * FROM orders` : Select all columns from table orders
 - SELECT did not create a new table, but display the output of this command only
+
+
+## LIMIT ...
+- `LIMIT num_of_rows`: Limit number of rows displayed.
+- Always the very last part of a query.
+              
+       SELECT *
+       FROM table_name
+       LIMIT 12;
