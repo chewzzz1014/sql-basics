@@ -27,9 +27,10 @@
 
 ## ORDER BY...
 - `ORDER BY column_name`: sort results into ascending order using the data in any column
+- Add `DESC` after column to flip the order (into descending order)
 - Must appear `after FROM` and before `LIMIT`
 
        SELECT *
        FROM table_name
-       ORDER BY column_name
+       ORDER BY column_name DESC
        LIMIT 12;
