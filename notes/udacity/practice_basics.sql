@@ -39,3 +39,18 @@ SELECT id, account_id, total_amt_usd
 FROM orders
 ORDER BY total_amt_usd DESC, account_id;
 
+
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/f72745e9-2fc9-4439-9f9d-3dbcea46a6c3/concepts/c69c3ace-1fbb-4705-a46e-26bb4eb0eae2
+
+-- Q1
+SELECT *
+FROM orders
+WHERE gloss_amt_usd >= 1000
+LIMIT 5;
+
+
+-- Q2
+SELECT *
+FROM orders
+WHERE total_amt_usd < 500
+LIMIT 10;
