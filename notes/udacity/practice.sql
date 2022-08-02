@@ -5,7 +5,7 @@
 SELECT id, occurred_at, total_amt_usd
 FROM orders
 ORDER BY occurred_ar
-LIMIT 10
+LIMIT 10;
 
 
 -- Q2
@@ -13,7 +13,7 @@ LIMIT 10
 SELECT id, account_id, total_amt_usd
 FROM orders
 ORDER BY total_amt_usd DESC
-LIMIT 5
+LIMIT 5;
 
 
 -- Q3
@@ -21,5 +21,5 @@ LIMIT 5
 SELECT id, account_id, total_amt_usd
 FROM orders
 ORDER BY total_amt_usd
-LIMIT 20
+LIMIT 20;
 
