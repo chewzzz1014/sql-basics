@@ -44,6 +44,7 @@
 - `WHERE`: display subsets of tables based on conditions that must be met.
 - Appear `after FROM` and `before ORDER BY and LIMIT`
 - <, >, <=, >=, =, !=
+- Wrapped non-numerical value in single qoutes
 
        SELECT *
        FROM table_name
