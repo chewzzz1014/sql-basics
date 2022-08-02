@@ -25,7 +25,7 @@
        FROM table_name
        LIMIT 12;
 
-## ORDER BY...
+## ORDER BY col
 - `ORDER BY column_name`: sort results into ascending order using the data in any column
 - Add `DESC` after column to flip the order (into descending order)
 - Must appear `after FROM` and before `LIMIT`
@@ -34,3 +34,7 @@
        FROM table_name
        ORDER BY column_name DESC
        LIMIT 12;
+       
+ 
+ ## ORDER BY col1, col2
+ - orting occurs using the leftmost column in your list first, then the next column from the left, and so on
