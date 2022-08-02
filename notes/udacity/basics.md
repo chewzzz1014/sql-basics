@@ -24,3 +24,12 @@
        SELECT *
        FROM table_name
        LIMIT 12;
+
+## ORDER BY...
+- `ORDER BY column_name`: sort our results using the data in any column
+- Must appear `after FROM` and before `LIMIT`
+
+       SELECT *
+       FROM table_name
+       ORDER BY column_name
+       LIMIT 12;
