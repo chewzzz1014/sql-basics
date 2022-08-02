@@ -54,3 +54,11 @@ SELECT *
 FROM orders
 WHERE total_amt_usd < 500
 LIMIT 10;
+
+
+
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/f72745e9-2fc9-4439-9f9d-3dbcea46a6c3/concepts/ced05354-d943-4dac-9b1c-25b9e778fd19
+
+SELECT name, website, primary_poc
+FROM accounts
+WHERE name = 'Exxon Mobil';
