@@ -37,4 +37,16 @@
        
  
  ## ORDER BY col1, col2
- - orting occurs using the leftmost column in your list first, then the next column from the left, and so on
+ - ordering occurs using the leftmost column in your list first, then the next column from the left, and so on
+
+
+## WHERE ...
+- `WHERE`: display subsets of tables based on conditions that must be met.
+- Appear `after FROM` and `before ORDER BY and LIMIT`
+- <, >, <=, >=, =, !=
+
+       SELECT *
+       FROM table_name
+       WHERE [condition]
+       ORDER BY column_name DESC
+       LIMIT 12;
