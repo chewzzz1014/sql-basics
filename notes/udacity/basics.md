@@ -72,7 +72,10 @@
       - For numeric or non-numeric
       - Eg: `WHERE name IN ('Walmart', 'Apple'); `
   3. `NOT`: 
-      - Used with IN and LIKE to select all of the rows NOT LIKE or NOT in.
+      - Used with IN and LIKE to select all of the rows NOT LIKE or NOT IN.
+      - To exclude certain conditions.
+      - Eg: `WHERE referrer_url NOT LIKE '%google%'`
+      - Eg: `WHERE name NOT IN ('Walmart', 'Apple'); `
   4. `AND & BETWEEN`: 
       - Combine operations where all combined conditions must be true
   5. `OR`: 
