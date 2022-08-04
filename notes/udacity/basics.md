@@ -78,5 +78,7 @@
       - Eg: `WHERE name NOT IN ('Walmart', 'Apple'); `
   4. `AND & BETWEEN`: 
       - Combine operations where all combined conditions must be true
+      - Eg: `WHERE col_name >=6 AND col_name <=10`
+      - Eg: `WHERE col_name BETWEEN 6 AND 10`
   5. `OR`: 
       - Combine operations where at least one of the combined conditions must be true.
