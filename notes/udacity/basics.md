@@ -61,3 +61,17 @@
       SELECT col1, (col3 * col4 )*100 AS col5, col6
       FROM table_name
       LIMIT 10;
+
+## Logical Operator
+  1. `LIKE`: 
+      - Perform operations similar to using WHERE and =, but for case when did not know exactly what we're looking for.
+      - Using wildcard that describes the matching (case sensitive). Eg: `WHERE referrer_url LIKE '%google%`
+      - % : Any num of chars
+  2. `IN`: 
+      - Perform operations similar to using WHERE and =, but for more than one condition.
+  3. `NOT`: 
+      - Used with IN and LIKE to select all of the rows NOT LIKE or NOT in.
+  4. `AND & BETWEEN`: 
+      - Combine operations where all combined conditions must be true
+  5. `OR`: 
+      - Combine operations where at least one of the combined conditions must be true.
