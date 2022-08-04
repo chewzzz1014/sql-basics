@@ -69,6 +69,8 @@
       - % : Any num of chars
   2. `IN`: 
       - Perform operations similar to using WHERE and =, but for more than one condition.
+      - For numeric or non-numeric
+      - Eg: `WHERE name IN ('Walmart', 'Apple'); `
   3. `NOT`: 
       - Used with IN and LIKE to select all of the rows NOT LIKE or NOT in.
   4. `AND & BETWEEN`: 
