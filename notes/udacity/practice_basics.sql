@@ -133,3 +133,57 @@ WHERE name NOT LIKE '%one%';
 SELECT name
 FROM accounts
 WHERE name NOT LIKE '%S';
+
+
+Solution for : https://learn.udacity.com/courses/ud198/lessons/f72745e9-2fc9-4439-9f9d-3dbcea46a6c3/concepts/72ca3f61-d78a-4a71-a388-5ca2c47511ba
+
+-- Q1
+
+SELECT *
+FROM orders
+WHERE stansard_qty > 1000 AND poster_qty = 0 AND gloss_qty = 0;
+
+
+-- Q2
+SELECT name
+FROM accounts
+WHERE name NOT LIKE 'C%' AND name LIKE '%s';
+
+
+-- Q3
+SELECT occurred_at, gloss_qty
+FROM orders
+WHERE gloss_qty BETWEEN 24 AND 29;
+
+-- Q4
+SELECT *
+FROM web_events 
+WHERE channel IN ('organic', 'adwords') AND occurred_at BETWEEN '2016-01-01' AND '2017-01-01'
+ORDER BY occurred_at DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
