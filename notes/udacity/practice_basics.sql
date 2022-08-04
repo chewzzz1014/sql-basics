@@ -76,3 +76,20 @@ LIMIT 10;
 SELECT id, account_id, ( poster_amt_usd/(standard_amt_usd + gloss_amt_usd + poster_amt_usd) ) AS per_revenue
 FROM orders
 LIMIT 10;
+
+
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/f72745e9-2fc9-4439-9f9d-3dbcea46a6c3/concepts/5a28944f-e21e-48d8-ae25-bb695fd26da5
+-- Q1
+SELECT name
+FROM accounts
+WHERE name LIKE 'C%';
+
+-- Q2
+SELECT name
+FROM accounts
+WHERE name LIKE '%one%';
+
+-- Q3
+SELECT name
+FROM accounts
+WHERE name LIKE '%s';
