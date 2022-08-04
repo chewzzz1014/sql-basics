@@ -105,3 +105,31 @@ WHERE sales_rep_id IN ('Walmart', 'Target', 'Nordstrom');
 SELECT *
 FROM web_events
 WHERE channel IN ('organic', 'adwords');
+
+
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/f72745e9-2fc9-4439-9f9d-3dbcea46a6c3/concepts/4ded649a-5557-477b-bea8-8012b50d0697
+
+-- Q1.1
+SELECT name, primary_poc, sales_rep_id
+FROM accounts
+WHERE name NOT IN ('Walmart', 'Target', 'Nordstrom');
+
+-- Q1.2
+SELECT *
+FROM web_events
+WHERE channel NOT IN ('organic', 'adwords');
+
+-- Q2.1
+SELECT name
+FROM accounts
+WHERE name NOT LIKE 'C%';
+
+-- Q2.2
+SELECT name
+FROM accounts
+WHERE name NOT LIKE '%one%';
+
+-- Q2.3
+SELECT name
+FROM accounts
+WHERE name NOT LIKE '%S';
