@@ -51,3 +51,13 @@
        WHERE [condition]
        ORDER BY column_name DESC
        LIMIT 12;
+
+## Derived Column / Calculated Column / Computed Column
+- Creating new column that is combination of existing columns
+- `AS`: Alias to the new column
+- Derived column along with its alias only exist for the duration of the query ( do not modify the table) 
+
+
+      SELECT col1, (col3 * col4 )*100 AS col5, col6
+      FROM table_name
+      LIMIT 10;
