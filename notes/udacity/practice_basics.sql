@@ -93,3 +93,15 @@ WHERE name LIKE '%one%';
 SELECT name
 FROM accounts
 WHERE name LIKE '%s';
+
+
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/f72745e9-2fc9-4439-9f9d-3dbcea46a6c3/concepts/5a28944f-e21e-48d8-ae25-bb695fd26da5
+-- Q1
+SELECT name, primary_poc, sales_rep_id
+FROM accounts
+WHERE sales_rep_id IN ('Walmart', 'Target', 'Nordstrom');
+
+-- Q2
+SELECT *
+FROM web_events
+WHERE channel IN ('organic', 'adwords');
