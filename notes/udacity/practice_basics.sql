@@ -62,3 +62,17 @@ LIMIT 10;
 SELECT name, website, primary_poc
 FROM accounts
 WHERE name = 'Exxon Mobil';
+
+
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/f72745e9-2fc9-4439-9f9d-3dbcea46a6c3/concepts/4200aea4-f9b7-4092-b5e9-ec09c5bc8a92
+
+-- Q1
+SELECT id, account_id, (standard_amt_usd / standard_qty) AS unit_price
+FROM orders
+LIMIT 10;
+
+
+-- Q2
+SELECT id, account_id, ( poster_amt_usd/(standard_amt_usd + gloss_amt_usd + poster_amt_usd) ) AS per_revenue
+FROM orders
+LIMIT 10;
