@@ -65,7 +65,7 @@
 ## Logical Operator
   1. `LIKE`: 
       - Perform operations similar to using WHERE and =, but for case when did not know exactly what we're looking for.
-      - Using wildcard that describes the matching (case sensitive). Eg: `WHERE referrer_url LIKE '%google%`
+      - Using wildcard that describes the matching (case sensitive). Eg: `WHERE referrer_url LIKE '%google%'`
       - % : Any num of chars
   2. `IN`: 
       - Perform operations similar to using WHERE and =, but for more than one condition.
