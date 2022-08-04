@@ -162,7 +162,24 @@ WHERE channel IN ('organic', 'adwords') AND occurred_at BETWEEN '2016-01-01' AND
 ORDER BY occurred_at DESC;
 
 
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/f72745e9-2fc9-4439-9f9d-3dbcea46a6c3/concepts/9e00e8bc-af6b-4c69-8979-4d1e0e9bc751
 
+-- Q1
+SELECT id
+FROM orders
+WHERE gloss_qty > 4000 OR poster_qty > 4000;
+
+-- Q2
+SELECT *
+FROM orders
+WHERE standard_qty = 0 AND (gloss_qty > 1000 OR poster_qty > 1000);
+
+--Q3
+SELECT *
+FROM accounts
+WHERE (name LIKE 'C%' OR name LIKE 'W%') 
+      AND (primary_poc LIKE '%ana%' OR primary_poc LIKE '%Ana%') 
+       AND primary_poc NOT LIKE '%eana%';
 
 
 
