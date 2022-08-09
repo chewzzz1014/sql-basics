@@ -42,4 +42,46 @@ JOIN accounts a
      ON s.id = a.sales_rep_id
 JOIN orders o
      ON o.account_id = a.id;
-     
+  
+  
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/279f3b98-a2ca-46ef-975b-e943daffc30b/concepts/4aef110e-56ee-447e-86cc-5103aa4b5b71
+
+-- Q1 
+SELECT r.name region_name, s.name sales_represent_name, a.name account_name
+FROM region r
+JOIN sales_reps s
+     ON r.id = s.region_id
+JOIN accounts a
+     ON a.sales_rep_id = s.id
+WHERE r.name = 'MidWest'
+ORDER BY a.name;
+
+-- Q2
+SELECT r.name, s.name, a.name
+FROM sales_reps s
+JOIN region r
+     ON s.region_id = r.id
+JOIN accounts a
+     ON s.id = sales_rep_id
+WHERE s.name LIKE 'S%' AND r.name = 'Midwest'
+ORDER BY a.name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
