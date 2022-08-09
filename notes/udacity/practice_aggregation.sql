@@ -105,11 +105,45 @@ GROUP BY r.name
 ORDER BY num_sales_reps;
 
 
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/702c7d74-4000-497d-9330-92eeb994cd5d/concepts/d4838435-ef71-4ba0-8a65-2f81cbd4c737
 
+-- Q1
+SELECT a.name, AVG(o.standard_qty) standard_avg,
+       AVG(o.poster_qty) poster_avg, AVG(o.gloss_qty) gloss_avg
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id
+GROUP BY a.name;
 
+-- Q2
+SELECT a.name, AVG(o.standard_amt_usd) standard_avg,
+       AVG(o.gloss_amt_usd) gloss_avg, AVG(o.poster_amt_usd) poster_avg
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id
+GROUP BY a.name;
 
+-- Q3
+SELECT s.name, w.channel, COUNT(w.channel) channel_count
+FROM sales_rep s
+JOIN accounts a
+       ON s.id = a.sales_rep_id
+JOIN web_events w
+       ON w.account_id = a.id
+GROUP BY s.name, w.channel
+ORDER BY channel_count DESC;
 
-
+-- Q4
+SELECT r.name, w.channel, COUNT(w.channel) channel_count
+FROM sales_reps s
+JOIN region r
+       ON s.region_id = r.id
+JOIN accounts a
+       ON s.id = a.sales_rep_id
+JOIN web_events w
+       ON a.id = w.id
+GROUP BY r.name, w.channel
+ORDER BY channel_count DESC;
 
 
 
