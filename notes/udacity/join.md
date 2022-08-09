@@ -18,3 +18,12 @@
 ## PRIMARY KEY & FOREIGN KEY
 - `Primary Key`: Column where every row has unique row.
 - `Foreign Key`: Columns in one table that's a primary key in a different table.
+
+## Using Alias
+- Specify the alias for a table in FROM statement
+            
+            
+     SELECT o.*, a.*
+     FROM demo.orders o
+     JOIN demo.accounts a
+          ON o.id = a.id
