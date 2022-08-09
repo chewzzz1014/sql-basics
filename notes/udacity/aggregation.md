@@ -42,3 +42,10 @@
             FROM table_name
             GROUP BY id, name
             ORDER BY id, name;
+
+## SELECT DISTINCT
+- Return the unique rows for all columns written in the SELECT statement
+
+            -- Return the unique rows across all 3 columns
+            SELECT DISTINCT column1, column2, column3
+            FROM table1;
