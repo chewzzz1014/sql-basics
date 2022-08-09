@@ -57,7 +57,7 @@ WHERE r.name = 'MidWest'
 ORDER BY a.name;
 
 -- Q2
-SELECT r.name, s.name, a.name
+SELECT r.name region_name, s.name sales_represent_name, a.name account_name
 FROM sales_reps s
 JOIN region r
      ON s.region_id = r.id
@@ -66,15 +66,68 @@ JOIN accounts a
 WHERE s.name LIKE 'S%' AND r.name = 'Midwest'
 ORDER BY a.name;
 
+-- Q3
+SELECT r.name region_name, s.name sales_represent_name, a.name account_name
+FROM sales_reps s
+JOIN region r
+     ON s.region_id = r.id
+JOIN accounts a
+     ON s.id = a.sales_rep_id
+WHERE s.name LIKE 'K%' AND r.name = 'Midwest'
+ORDER BY a.name;
 
 
+-- Q4
+SELECT r.name region_name, a.name account_name, o.total_amt_usd/(o.total+0.01) unit_price
+FROM sales_reps s
+JOIN region r
+     ON r.name = s.region_id 
+JOIN accounts a
+     ON s.id = a.sales_rep_id
+JOIN orders o
+     ON a.id = o.account_id
+WHERE o.standard_amt_usd > 100;
+
+-- Q5
+SELECT r.name region_name, a.name account_name, o.total_amt_usd/(o.total+0.01) unit_price
+FROM sales_reps s
+JOIN region r
+     ON s.region_id = r.id
+JOIN accounts a
+     ON s.id = a.sales_rep_id
+JOIN orders o
+     ON a.id = o.account_id
+WHERE o.standard_qty > 100 AND o.poster_qty > 50
+ORDER BY unit_price;
 
 
+-- Q6
+SELECT r.name region_name, a.name account_name, o.total_amt_usd/(o.total+0.01) unit_price
+FROM sales_reps s
+JOIN region r
+     ON s.region_id = r.id
+JOIN accounts a
+     ON s.id = a.sales_rep_id
+JOIN orders o
+     ON a.id = o.account_id
+WHERE o.standard_qty > 100 AND o.poster_qty >50
+ORDER BY unit_price DESC;
 
-
-
-
-
+-- Q7
+SELECT DISTINCT a.name account_name, w.channel channel
+FROM account a
+JOIN web_events
+     ON a.id = w.account_id 
+WHERE a.id = '1001';
+     
+     
+-- Q8
+SELECT o.occurred_at order_time, a.name account_name, o.total total, o.total_amt_usd total_amount_in_usd
+FROM accounts a
+JOIN orders o
+     ON a.id = o.account_id
+WHERE o.occurred_at BETWEEN '01-01-2015' AND '01-01-2016'
+ORDER BY o.occurred_at DESC;
 
 
 
