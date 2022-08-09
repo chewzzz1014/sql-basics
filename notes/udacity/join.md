@@ -1,5 +1,6 @@
 ## INNER JOIN
 - `ON`: Specifies a logical statement to combine the table in from and join statements.
+- Only return rows that appear in both tables.
 
       -- Joining 2 tables
       SELECT table_1.*, table_2.*
@@ -23,7 +24,38 @@
 - Specify the alias for a table in FROM statement
             
             
-     SELECT o.*, a.*
-     FROM demo.orders o
-     JOIN demo.accounts a
-          ON o.id = a.id
+        
+        SELECT o.*, a.*
+        FROM demo.orders o
+        JOIN demo.accounts a
+        -- RIGHT OUTER JOIN
+           ON o.id = a.id
+
+## Left Join
+- Include all rows from the left table, regardless whether they match the condition
+- Unmatched rows have the column with empty cell, called NULL
+- Unmatched rows stayed at the bottom of those rows that match
+
+           SELECT *
+           FROM left_table
+           LEFT JOIN right_table
+           -- LEFT OUTER JOIN
+
+## Right Join
+- Include all rows from the right table, regardless whether they match the condition
+- Unmatched rows have the column with empty cell, called NULL
+- Unmatched rows stayed at the bottom of those rows that match
+
+           SELECT *
+           FROM left_table
+           RIGHT JOIN right_table
+
+## Full Outer Join
+- Return the inner join result set, as well as any unmatched rows from either of the two tables being joined
+
+## Summary
+|Type of Joins|Description|
+|-------------|-----------|
+|Inner Join | Only return rows that appear in both tables.|
+|Left Join| ...|
+|Right Join| ...|
