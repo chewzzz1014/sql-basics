@@ -27,6 +27,7 @@
 
 ## GROUP BY
 - Allows creating segments that will aggregate independent from one another
+- Can group by multiple columns
 - GROUP BY can be used to aggregate data within subsets of the data. For example, grouping for different accounts, different regions, or different sales representatives.
 - `Any column in the SELECT statement that is not within an aggregator must be in the GROUP BY clause.`
 - Placed between WHERE and ORDER clause
@@ -34,4 +35,10 @@
 
             SELECT  id, SUM(product_qty), SUM(anotherProduct_qty)
             FROM table_name
-            GROUP BY id
+            GROUP BY id;
+            
+            
+            SELECT  id, name, SUM(product_qty), SUM(anotherProduct_qty)
+            FROM table_name
+            GROUP BY id, name
+            ORDER BY id, name;
