@@ -48,3 +48,73 @@ SELECT AVG(standard_qty) mean_standard, AVG(poster_qty) mean_poster,
        AVG(gloss_qty) mean_gloss, AVG(standard_amt_usd) mean_standard_usd,
        AVG(gloss_amt_usd) mean_gloss_usd, AVG(poster_amt_usd) mean_poster_usd
 FROM orders;
+
+
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/702c7d74-4000-497d-9330-92eeb994cd5d/concepts/fdb62a79-77da-4c96-964a-9d3bcb49b3cc
+
+-- Q1
+SELECT a.name, o.occurred_date
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id
+ORDER BY o.occurred_at
+LIMIT 1;
+
+-- Q2
+SELECT SUM(o.total_amt_usd), a.name
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id
+GROUP BY a.name;
+
+-- Q3
+SELECT w.occurred_at date, w.channel, a.name account_name
+FROM accounts a
+JOIN web_events w
+       ON w.account_id = a.id
+ORDEY BY date DESC
+LIMIT 1;
+
+-- Q4
+SELECT channel, COUNT(*) 
+FROM web_events
+GROUP BY channel;
+
+-- Q5
+SELECT a.primary_poc primary_contact
+FROM accounts a
+JOIN web_events w
+       ON a.id = w.account_id
+ORDER BY w.occurred_at
+LIMIT 1;
+
+-- Q6
+SELECT a.name, MIN(o.total_amt_usd)
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id
+GROUP BY a.name
+ORDER BY o.total_amt_usd;
+
+-- Q7
+SELECT r.name, COUNT(s.id) num_sales_reps
+FROM sales_reps s
+JOIN region r
+       ON s.region_id = r.id
+GROUP BY r.name
+ORDER BY num_sales_reps;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
