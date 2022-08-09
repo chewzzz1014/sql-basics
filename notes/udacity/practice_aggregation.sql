@@ -146,9 +146,28 @@ GROUP BY r.name, w.channel
 ORDER BY channel_count DESC;
 
 
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/702c7d74-4000-497d-9330-92eeb994cd5d/concepts/a680b2a7-2d1c-4292-8d96-3b4f5dc51f12
+
+-- Q1
+SELECT a.id, a.name, r.id, r.name
+FROM sales_reps s
+JOIN region r 
+       ON s.region_id = r.id
+JOIN accounts a
+       ON s.id = a.sales_rep_id;
+     
+SELECT DISTINCT id, name
+FROM accounts;
 
 
+-- Q2
+SELECT DISTINCT s.id, s.name, COUNT(*) num_accounts
+FROM sales_reps s
+JOIN accounts a
+       ON s.id = a.sales_rep_id;
+GROUP BY s.id, s.name
+ORDER BY num_accounts;
 
-
-
+SELECT DISTINCT id, name
+FROM sales_reps;
 
