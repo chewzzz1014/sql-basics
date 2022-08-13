@@ -339,8 +339,8 @@ SELECT a.name, SUM(o.total_amt_usd) total_spent,
         CASE WHEN total_amt_usd >= 3000 THEN 'Large' ELSE 'Small' END AS order_level
 FROM orders o
 JOIN accounts a
-       ON o.acocunt_id = a.id
-WHERE o.occurred_at BETWEEN "2016-01-01" AND "2017-01-01"
+       ON o.account_id = a.id
+WHERE o.occurred_at > "2015-12-31"
 GROUP BY a.name
 ORDER BY 2 DESC;
 
