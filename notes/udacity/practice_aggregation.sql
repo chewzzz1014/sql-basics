@@ -267,8 +267,41 @@ ORDER BY use_of_channel DESC
 LIMIT 10;
 
 
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/702c7d74-4000-497d-9330-92eeb994cd5d/concepts/a2ac1fbb-beb4-4935-9d9f-121ef251da29
+
+-- Q1
+SELECT DATE_PART("year", occurred_at) year, SUM(total_amt_usd)
+FROM orders
+GROUP BY 1
+ORDER BY 2 DESC;
 
 
+--Q2
+SELECT DATE_PART("month", occurred_at) month, SUM(total_amt_usd)
+FROM orders
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 1;
 
+-- Q3
+SELECT DATE_PART("year", occurred_at), COUNT(*) total_sales
+FROM orders
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 1;
 
+-- Q4
+SELECT DATE_PART("month", occurred_at), COUNT(*) total_sales
+FROM orders
+WHERE BETWEEN '2014-01-01' AND '2017-01-01'
+GROUP BY 1
+ORDER BY 2 DESC;
 
+-- Q5
+SELECT SELECT_PART("month", o.occurred_at), SUM(o.gloss.amt_usd) total_amt_gloss_spent
+FROM orders o
+JOIN accounts a
+       ON o.account_id = a.id;
+WHERE a.name = 'Walmart'
+GROUP BY 1
+ORDER BY 2 DESC;
