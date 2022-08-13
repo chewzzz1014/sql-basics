@@ -171,3 +171,104 @@ ORDER BY num_accounts;
 SELECT DISTINCT id, name
 FROM sales_reps;
 
+
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/702c7d74-4000-497d-9330-92eeb994cd5d/concepts/4daf9eeb-1940-4cab-8ea6-9a20647a99db
+
+-- Q1
+SELECT s.name, s.id, COUNT(*) as num_of_account
+FROM sales_reps s
+JOIN accounts a
+       ON s.id = a.sales_rep_id
+GROUP BY s.name, s.id
+HAVING COUNT(*) > 5
+ORDER BY num_of_account;
+
+
+-- Q2
+SELECT a.id, a.name, COUNT(*) num_of_orders
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id
+GROUP BY a.id, a.name
+HAVING COUNT(*) > 20
+ORDER BY num_of_orders;
+
+
+-- Q3
+SELECT a.id, a.name, COUNT(*) num_of_orders
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id
+GROUP BY a.id, a.name
+ORDER BY COUNT(*)
+LIMIT 1;
+
+-- Q4
+SELECT a.id, a.name, SUM(o.total_amt_usd) total_amt_orders
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id
+GROUP BY a.id, a.name
+HAVING SUM(o.total_amt_usd) > 30000;
+
+-- Q5
+SELECT a.id, a.name, SUM(o.total_amt_usd) total_amt_orders
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id
+GROUP BY a.id, a.name
+HAVING SUM(o.total_amt_usd) < 1000
+ORDER BY total_amt_orders;
+
+-- Q6
+SELECT a.id, a.name, SUM(total_amt_usd) total_spent
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id;
+GROUP BY a.id, a.name
+ORDER BY total_spent DESC
+LIMIT 1;
+
+-- Q7
+SELECT a.id, a.name, SUM(total_amt_usd) total_spent
+FROM accounts a
+JOIN orders o
+       ON a.id = o.account_id;
+GROUP BY a.id, a.name
+ORDER BY total_spent
+LIMIT 1;
+
+-- Q8
+SELECT a.id, a.name, COUNT(w.channel) freq_use_channel
+FROM accounts a
+JOIN web_events w
+       ON a.id = w.account_id;
+GROUP BY a.id, a.name
+HAVING w.channel = 'facebook' AND COUNT(w.channel) > 6
+ORDER BY freq_use_channel DESC;
+
+-- Q9
+SELECT a.id, a.name, MAX(w.channel) max_used_channel
+FROM accounts a
+JOIN web_events w
+       ON a.id = w.account_id
+HAVING MAX(w.channel) = 'facebook'
+ORDER BY max_used_channel DESC
+LIMIT 1;
+
+-- Q9
+SELECT COUNT(w.channel) max_used_channel
+FROM accounts a
+JOIN web_events w
+       ON a.id = w.account_id
+ORDER BY max_used_channel DESC
+LIMIT 1;
+
+
+
+
+
+
+
+
+
