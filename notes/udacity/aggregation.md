@@ -19,7 +19,7 @@
 - Ignores NULL values
 - Can be used for non-numerical columns
 
-## AVERAGE
+## AVERAGE (AVG)
 - `SELECT AVG(col)` 
 - For numerical column only
 - Ignore NULL values
@@ -49,3 +49,10 @@
             -- Return the unique rows across all 3 columns
             SELECT DISTINCT column1, column2, column3
             FROM table1;
+
+## HAVING
+- `WHERE cannot filter aggregated column`
+- HAVING is the clean way to filter a query that has been aggregated.
+- The WHERE of aggregated query.
+
+
