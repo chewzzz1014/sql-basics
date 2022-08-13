@@ -80,7 +80,7 @@
 
 ## DATE_PART
 - DATE_PART can be useful for pulling a specific portion of a date, but notice pulling month or day of the week (dow) means that you are no longer keeping the years in order. Rather you are grouping for certain components regardless of which year they belonged in.
-- `DATE_PART("dow", column)` : Return the DOW (Day of Week) for a date, Sunday for 0 and Satruday for 6.
+- `DATE_PART("dow", column)` : Return the DOW (Day of Week) for a date, Sunday for 0 and Saturday for 6.
 
             SELECT DATE_PART('dow', occurred_at) AS day_of_week,
                    SUM(standard_qty) AS standard_qty_sum
@@ -93,3 +93,18 @@
  |1|DATE_PART("day", 2017-04-01 12:15:01)|
  |4|DATE_PART("month", 2017-04-01 12:15:01)|
  |2017|DATE_PART("year", 2017-04-01 12:15:01)|
+
+
+## CASE
+- Derive: Take data from existing columns and modify them
+- `CASE`: Handle "if" "then" logic
+- `Use in SELECT and MUST end with 'END'`
+- `Include: WHEN, THEN, ELSE and END`
+- Can make any conditional statement using any conditional operator (like WHERE) between WHEN and THEN. This includes stringing together multiple conditional statements using AND and OR.
+
+        SELECT id,
+               account_id,
+               occurred_at,
+               channel,
+              CASE WHEN channel = 'facebook' THEN 'yes' ELSE "no" END AS is_facebook
+        FROM web_events_full
