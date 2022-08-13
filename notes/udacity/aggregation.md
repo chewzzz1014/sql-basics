@@ -55,4 +55,24 @@
 - HAVING is the clean way to filter a query that has been aggregated.
 - The WHERE of aggregated query.
 
+## Date
+- General format: DD-MM-YYYY
+- In database: `YYYY-MM-DD`           
 
+## DATE_TRUNC
+
+            
+            SELECT DATE_TRUNC('day', occurred_at) AS day,
+                   SUM(standard_qty) AS standard_qty_sum
+            FROM orders
+            GROUP BY DATE_TRUNC('day', occurred_at)
+            ORDER BY DATE_TRUNC('day', occurred_at)
+            
+            
+            
+ |Result|Input|
+ |------|-----|
+ |2017-04-01 12:15:01|DATE_TRUNC("second", 2017-04-01 12:15:01)|
+ |2017-04-01 00:00:00|DATE_TRUNC("day", 2017-04-01 12:15:01)|
+ |2017-04-01 00:00:00|DATE_TRUNC("month", 2017-04-01 12:15:01)|
+ |2017-04-01 00:00:00|DATE_TRUNC("year", 2017-04-01 12:15:01)|
