@@ -60,7 +60,7 @@
 - In database: `YYYY-MM-DD`           
 
 ## DATE_TRUNC
-
+- Truncate date into particular part of date-time column
             
             SELECT DATE_TRUNC('day', occurred_at) AS day,
                    SUM(standard_qty) AS standard_qty_sum
@@ -79,6 +79,13 @@
 
 
 ## DATE_PART
+- DATE_PART can be useful for pulling a specific portion of a date, but notice pulling month or day of the week (dow) means that you are no longer keeping the years in order. Rather you are grouping for certain components regardless of which year they belonged in.
+- `DATE_PART("dow", column)` : Return the DOW (Day of Week) for a date, Sunday for 0 and Satruday for 6.
+
+            SELECT DATE_PART('dow', occurred_at) AS day_of_week,
+                   SUM(standard_qty) AS standard_qty_sum
+            FROM orders
+  
 
  |Result|Input|
  |------|-----|
