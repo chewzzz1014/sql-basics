@@ -305,3 +305,78 @@ JOIN accounts a
 WHERE a.name = 'Walmart'
 GROUP BY 1
 ORDER BY 2 DESC;
+
+
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/702c7d74-4000-497d-9330-92eeb994cd5d/concepts/e943ef22-1951-44e7-a244-b27792a74911
+
+-- Q1
+SELECT account_id, 
+       total_amt_usd,
+       CASE WHEN total_amt_usd >= 3000 THEN 'Large' ELSE 'Small' END AS order_level
+FROM orders;
+
+-- Q2
+SELECT CASE WHEN total>= 2000 THEN "At Least 2000"
+            WHEN total >= 1000 AND total <= 2000 THEN "Between 1000 and 2000"
+            ELSE "Less than 1000" END AS orders_cat.
+            COUNT(*) AS order_count
+FROM orders;
+
+-- Q3
+SELECT a.name, SUM(o.total_amt_usd) AS total_sales_all_order,
+       CASE WHEN SUM(o.total_amt_usd) > 200000 THEN "Greater than 200,000"
+            WHEN SUM(o.total_amt_usd) >=100000 AND SUM(o.total_amt_usd)<=200000 THEN "Between 100,000 and 200,000"
+            ELSE "Under 100,000" END AS level
+FROM orders o
+JOIN accounts a
+       ON o.account_id = a.id
+GROUP BY a.name
+ORDER BY total_sales_all_order DESC;
+
+
+-- Q4
+SELECT a.name, SUM(o.total_amt_usd) total_spent,
+        CASE WHEN total_amt_usd >= 3000 THEN 'Large' ELSE 'Small' END AS order_level
+FROM orders o
+JOIN accounts a
+       ON o.acocunt_id = a.id
+WHERE o.occurred_at BETWEEN "2016-01-01" AND "2017-01-01"
+GROUP BY a.name
+ORDER BY 2 DESC;
+
+       
+
+-- Q5
+SELECT s.name, COUNT(*) num_orders,
+       CASE WHEN COUNT(*) > 200 THEN "top" ELSE "not" END AS more_than_200
+FROM orders o
+JOIN acocunts a
+       ON a.id = o.account_id
+JOIN sales_reps s
+       ON s.id = a.sales_rep_id
+GROUP BY 1
+ORDER BY 2 DESC;
+
+
+
+-- Q6
+SELECT s.name, COUNT(*) num_orders, SUM(o.total_amt_usd) total_spent,
+       CASE WHEN COUNT(*)>200 OR SUM(o.total_amt_usd)>750000 THEN "top"
+            WHEN COUNT(*)>150 OR SUM(o.total_amt_usd)>500000 THEN "middle"
+            ELSE "low" END AS level
+FROM orders o
+JOIN accounts a
+       ON o.account_id = a.id
+JOIN sales_reps s
+       ON s.id = a.sales_rep_id
+GROUP BY 1
+ORDER BY 2 DESC;
+
+
+
+
+
+
+
+
+
