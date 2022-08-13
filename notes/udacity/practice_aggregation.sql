@@ -175,7 +175,7 @@ FROM sales_reps;
 -- Solution for : https://learn.udacity.com/courses/ud198/lessons/702c7d74-4000-497d-9330-92eeb994cd5d/concepts/4daf9eeb-1940-4cab-8ea6-9a20647a99db
 
 -- Q1
-SELECT s.name, s.id, COUNT(*) as num_of_account
+SELECT s.name, s.id, COUNT(*) num_of_account
 FROM sales_reps s
 JOIN accounts a
        ON s.id = a.sales_rep_id
@@ -239,32 +239,32 @@ ORDER BY total_spent
 LIMIT 1;
 
 -- Q8
-SELECT a.id, a.name, COUNT(w.channel) freq_use_channel
+SELECT a.id, a.name, w.channel, COUNT(w.channel) freq_used_facebook
 FROM accounts a
 JOIN web_events w
        ON a.id = w.account_id;
 GROUP BY a.id, a.name
 HAVING w.channel = 'facebook' AND COUNT(w.channel) > 6
-ORDER BY freq_use_channel DESC;
+ORDER BY freq_used_facebook DESC;
 
 -- Q9
-SELECT a.id, a.name, MAX(w.channel) max_used_channel
+SELECT a.id, a.name, w.channel, COUNT(*) freq_used_channel
 FROM accounts a
 JOIN web_events w
        ON a.id = w.account_id
-HAVING MAX(w.channel) = 'facebook'
-ORDER BY max_used_channel DESC
+WHERE w.channel = 'facebook'
+GROUP BY a.id, a.name, w.channel
+ORDER BY freq_used_channel DESC
 LIMIT 1;
 
--- Q9
-SELECT COUNT(w.channel) max_used_channel
+-- Q10
+SELECT a.id, a.name, w.channel, COUNT(*) use_of_channel
 FROM accounts a
 JOIN web_events w
        ON a.id = w.account_id
-ORDER BY max_used_channel DESC
-LIMIT 1;
-
-
+GROUP BY a.id, a.name, w.channel
+ORDER BY use_of_channel DESC
+LIMIT 10;
 
 
 
