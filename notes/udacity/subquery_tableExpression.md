@@ -15,3 +15,25 @@ FROM table
   
  ) sub
 ```
+
+## Subquery Example
+1. Find the number of events occur for each day for each channel
+```
+SELECT DATE_TRUNC('day', occurred_at) as day,
+	     channel,
+       COUNT(*) as event_count
+FROM web_events
+GROUP BY 1, 2;
+```
+2. Find the average number of events for each channel.
+```
+SELECT channel, AVG(event_count)
+FROM
+(SELECT DATE_TRUNC('day', occurred_at) as day,
+	     channel,
+       COUNT(*) as event_count
+FROM web_events
+GROUP BY 1, 2
+) sub
+GROUP BY 1;
+```
