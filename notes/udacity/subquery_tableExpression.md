@@ -16,7 +16,7 @@ FROM table
  ) sub
 ```
 
-## Subquery Example
+## Subquery Example (Subquery as source for outer query)
 1. Find the number of events occur for each day for each channel
 ```
 SELECT DATE_TRUNC('day', occurred_at) as day,
@@ -36,4 +36,16 @@ FROM web_events
 GROUP BY 1, 2
 ) sub
 GROUP BY 1;
+```
+## Subquery as Condition
+- Display orders in months with least orders
+- In this examples, it workds bcs the result of inner query is only one cell.
+- Use `IN` for inner query result with more than one row.
+```
+SELECT *
+FROM orders
+WHERE DATE_TRUNC('month', occurred_at) = 
+       ( SELECT DATE_TRUNC('month', MIN(occurred_at)) AS min_month
+          FROM orders
+	)
 ```
