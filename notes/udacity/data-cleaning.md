@@ -38,4 +38,11 @@
 - Make all character uppercase
 - UPPER(column)
 
+## CONCAT
+- combine values from several columns into one column
+- CONCAT(column_1, delimiter, column_2)
+
+## Piping, ||
+- combine values from several columns into one column
+- column_1 ||''|| last_name
 
