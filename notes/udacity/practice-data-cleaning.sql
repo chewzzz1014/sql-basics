@@ -28,6 +28,18 @@ FROM
        CASE WHEN LEFT(LOWER(name), 1) IN ('a', 'e', 'i', 'o', 'u') THEN 0 ELSE 1 END AS start_with_others
 FROM accounts) sub;
 
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/ee918449-4599-42ac-aeae-67228b32eb7f/concepts/e24b22ba-a7e8-414a-8270-ccf85da9c5af
+
+-- Q1
+SELECT LEFT(primary_poc,  STRPOS(primary_poc, " ")-1) as first_name,
+       RIGHT(primary_poc, LENGTH(primary_poc)-STRPOS(primary_poc, " ")) as last_name
+FROM accounts;
+
+-- Q2
+SELECT LEFT(name, STRPOS(name, " ")) as first_name,
+       RIGHT(name, LENGTH(name)-POSITION(" " IN name)) as last_name
+FROM sales_reps;
+
 
 
 
