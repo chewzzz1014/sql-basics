@@ -46,3 +46,17 @@
 - combine values from several columns into one column
 - column_1 ||''|| last_name
 
+## TO_DATE
+- Convert string literal month to numeric (eg, January -> 1)
+- TO_DATE(column, "month")
+ ```
+ DATE_PART("month", TO_DATE(month_string_literal, "month")) AS clean_month
+ ```
+
+## CAST
+- Change columns from one data type to another
+- Convert a string to a date: `CAST(date_column AS DATE) AS formatted_date`
+
+## ::
+- Convert a string to a date: `date_column::DATE`
+
