@@ -22,7 +22,7 @@
 - Case sensitive
 - Index of first position is 1
 - POSITION(char, column)
-- POSITION(',', IN city_state)
+- POSITION(',' IN city_state)
 
 ## STROPS
 - `STROPS`: Provides same result as POSTION, but syntax is diff
