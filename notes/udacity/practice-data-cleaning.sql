@@ -53,10 +53,25 @@ FROM
 FROM accounts) sub;
 
 -- Q2
-
+-- Remove spaces in company name: replace(string text, from text, to text)
+SELECT CONCAT(first_name, '.', last_name, '@', REPLACE(name, " ", ""), '.com') email
+FROM 
+(SELECT 
+        name,
+        LEFT(primary_poc, STRPOS(primary_poc, ' ')-1) AS first_name,
+        RIGHT(primary_poc, LENGTH(primary_poc)-STRPOS(primary_poc, ' ')) AS last_name
+FROM accounts) sub;
 
 --Q3
+-- We would also like to create an initial password, which they will change after their first log in. The first password will be the first letter of the primary_poc's first name (lowercase), then the last letter of their first name (lowercase), the first letter of their last name (lowercase), the last letter of their last name (lowercase), the number of letters in their first name, the number of letters in their last name, and then the name of the company they are working with, all capitalized with no spaces.
 
+SELECT CONCAT( LOWER(LEFT(first_name, 1)), LOWER(RIGHT(first_name, 1)), LOWER(LEFT(last_name, 1)), LOWER(RIGHT(last_name, 1)), LENGTH(first_name), LENGTH(last_name), UPPER(REPLACE(name, ' ', '')) )
+FROM 
+(SELECT 
+        name,
+        LEFT(primary_poc, STRPOS(primary_poc, " ")-1) AS first_name,
+        RIGHT(primary_poc, LENGTH(primary_poc)-STRPOS(primary_poc, " ")) AS last_name
+FROM accounts) sub;
 
 
 
