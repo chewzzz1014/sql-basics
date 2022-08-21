@@ -41,6 +41,24 @@ SELECT LEFT(name, STRPOS(name, " ")) as first_name,
 FROM sales_reps;
 
 
+-- Solution for : https://learn.udacity.com/courses/ud198/lessons/ee918449-4599-42ac-aeae-67228b32eb7f/concepts/e3542078-bac0-41f6-ac69-3a9664913da4
+
+-- Q1
+SELECT CONCAT(first_name, '.', last_name, '@', name, '.com') email
+FROM 
+(SELECT 
+        name,
+        LEFT(primary_poc, STRPOS(primary_poc, ' ')-1) AS first_name,
+        RIGHT(primary_poc, LENGTH(primary_poc)-STRPOS(primary_poc, ' ')) AS last_name
+FROM accounts) sub;
+
+-- Q2
+
+
+--Q3
+
+
+
 
 
 
