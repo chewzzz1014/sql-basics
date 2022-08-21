@@ -47,11 +47,11 @@
 - column_1 ||''|| last_name
 
 ## TO_DATE
-- Convert string literal month to numeric (eg, January -> 1)
-- TO_DATE(column, "month")
+- TO_DATE('20170103','YYYYMMDD');
  ```
  DATE_PART("month", TO_DATE(month_string_literal, "month")) AS clean_month
  ```
+ - date_part(text, timestamp): date_part('hour', timestamp '2001-02-16 20:38:40')
 
 ## CAST
 - Change columns from one data type to another
@@ -59,4 +59,8 @@
 
 ## ::
 - Convert a string to a date: `date_column::DATE`
+
+## COALESCE
+- Returns the first non-null value passed for each row
+- COALESCE(column, value_if_value_was_null)
 
