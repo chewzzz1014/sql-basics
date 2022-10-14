@@ -119,7 +119,6 @@ INSERT INTO employees (employee_id, first_name, last_name, email, phone_number, 
 INSERT INTO employees (employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary, manager_id, department_id) VALUES (205, 'Shelley', 'Higgins', 'SHIGGINS', '515.123.8080', '07-JUN-94', 'AC_MGR', 12000, 101, 110);
 INSERT INTO employees (employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary, manager_id, department_id) VALUES (206, 'Wiliam', 'Gietz', 'WGIETS', '515.123.8181', '07-JUN-94', 'AC_ACCOUNT', 8300, 205, 110);
 
-
 CREATE TABLE job_history(
     employee_id number(6) NOT NULL,
     start_date date NOT NULL,
