@@ -36,7 +36,7 @@ ORDER BY last_name;
 -- Q7
 SELECT last_name Employee, salary "Monthly Salary"
 FROM employees
-WHERE department_id IN (20, 50) AND salary BETWEEN 5000 AND 12000;
+WHERE department_id IN (20, 50) AND (salary BETWEEN 5000 AND 12000);
 
 -- Q8
 SELECT first_name || ' ' || last_name "Full Name", job_title, salary 
@@ -48,14 +48,14 @@ WHERE TO_CHAR(salary) LIKE '170%';
 -- Q9 
 SELECT last_name, hire_date
 FROM employees
-WHERE EXTRACT(YEAR FROM DATE hire_date) = 1994;
+WHERE EXTRACT(YEAR FROM hire_date) = 1994;
 
 -- Q10
 SELECT last_name, job_title
 FROM employees
 JOIN jobs
    USING (job_id)
-WHERE manager_id IS NULL
+WHERE manager_id IS NULL;
 
 -- Q11
 SELECT last_name, salary, commission_pct
@@ -64,3 +64,39 @@ WHERE commission_pct IS NOT NULL
 ORDER BY salary DESC, commission_pct DESC;
 
 -- Q12
+SELECT last_name
+FROM employees
+WHERE last_name LIKE '__a%';
+
+-- Q13
+SELECT last_name
+FROM employees
+WHERE last_name LIKE '%a%' AND last_name LIKE '%e%';
+
+-- Q14
+SELECT last_name, job_title, salary
+FROM employees
+JOIN jobs
+    USING (job_id)
+WHERE job_id IN ('SA_REP', 'ST_CLERK') AND salary NOT IN (2500, 3500, 7000);
+
+-- Q15
+SELECT *
+FROM employees
+WHERE job_id = 'ST_CLERK' and EXTRACT(YEAR FROM hire_date)>1997;
+
+-- Q16
+SELECT first_name || ' ' || last_name full_name
+FROM employees 
+WHERE last_name NOT LIKE '%A%';
+
+-- Q17
+SELECT last_name, job_id, salary, commission_pct 
+FROM employees
+WHERE commission_pct IS NOT NULL
+ORDER BY salary DESC;
+
+-- Q18
+SELECT last_name, salary, commission_pct * 100 || '%' commission
+FROM employees
+WHERE commission_pct * 100 = 20;
