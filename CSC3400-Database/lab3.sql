@@ -49,6 +49,7 @@ WHERE TO_CHAR(salary) LIKE '170%';
 SELECT last_name, hire_date
 FROM employees
 WHERE EXTRACT(YEAR FROM hire_date) = 1994;
+-- WHERE TO_CHAR(hire_date, 'yyyy') = '1994';
 
 -- Q10
 SELECT last_name, job_title
