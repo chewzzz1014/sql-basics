@@ -92,8 +92,10 @@ FROM employees
 WHERE last_name NOT LIKE '%A%';
 
 -- Q17
-SELECT last_name, job_id, salary, commission_pct 
+SELECT last_name, job_title, salary, commission_pct 
 FROM employees
+JOIN jobs
+    USING(job_id)
 WHERE commission_pct IS NOT NULL
 ORDER BY salary DESC;
 
