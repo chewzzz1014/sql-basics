@@ -8,7 +8,7 @@ WHERE last_name = 'Higgins';
 -- Q2
 SELECT last_name, salary
 FROM employees 
-WHERE salary > 10000
+WHERE salary > 10000;
 
 -- Q3
 SELECT last_name, department_id
