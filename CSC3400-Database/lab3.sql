@@ -18,7 +18,7 @@ WHERE employee_id = 201;
 -- Q4
 SELECT last_name, salary
 FROM employees
-WHERE salary NOT BETWEEN 5000 AND 12000
+WHERE salary NOT BETWEEN 5000 AND 12000;
 
 -- Q5
 SELECT last_name, job_id, hire_date as start_date
