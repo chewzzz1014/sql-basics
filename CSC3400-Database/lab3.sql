@@ -85,11 +85,16 @@ WHERE job_id IN ('SA_REP', 'ST_CLERK') AND salary NOT IN (2500, 3500, 7000);
 SELECT *
 FROM employees
 WHERE job_id = 'ST_CLERK' and EXTRACT(YEAR FROM hire_date)>1997;
+-- EXTRACT (YEAR FROM TO_DATE(hire_date, 'DD-MM-RRRR')) > 1997
 
 -- Q16
 SELECT first_name || ' ' || last_name full_name
 FROM employees 
-WHERE last_name NOT LIKE '%A%';
+WHERE 
+    last_name NOT LIKE '%A%' and 
+--    first_name NOT LIKE '%A%' and 
+--    first_name NOT LIKE '%a%' and 
+    last_name NOT LIKE '%a%';
 
 -- Q17
 SELECT last_name, job_title, salary, commission_pct 
