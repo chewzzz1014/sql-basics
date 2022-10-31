@@ -51,7 +51,7 @@ ORDER BY months_worked;
 -- Q8
 SELECT 
     last_name,
-    '$' || RPAD(TO_CHAR(salary), 15, '0') salary
+    '$' || RPAD((TO_CHAR(salary)|| '.'), 16, '0') salary
 FROM employees;
 
 
