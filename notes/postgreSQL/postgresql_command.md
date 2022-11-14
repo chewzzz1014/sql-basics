@@ -12,14 +12,34 @@ psql --username=XXXX --dbname=XXXX
 ## Datatype
 - INT
 - VARCHAR(length): Specify max length
+- serial: make the column an INT with NOT NULL constraint, and automatically increment the integer when a new row is added.
 
 ## SQL ( always end with ; )
+
+
+>Database
+
 
 - Create database
 
 ```
 CREATE DATABASE database_name; 
 ```
+- Rename database
+
+```
+ALTER DATABASE database_name RENAME TO new_database_name;
+```
+
+- Drop database
+
+```
+DROP DATABSE database_name;
+```
+
+
+>Table
+
 
 - Create table
 
@@ -30,7 +50,7 @@ CREATE TABLE table_name();
 - Add column to existing table
 
 ```
-ALTER TABLE table_name ADD COLUMN column_name DATATYPE;
+ALTER TABLE table_name ADD COLUMN column_name DATATYPE CONSTRAINT;
 ```
 
 - Drop column from existing table
@@ -52,6 +72,12 @@ INSERT INTO table_name(col_1, col_2...) VALUES (value_1, value_2...);
 
 # fill in all columns
 INSERT INTO table_name VALUES (value_1, value_2...);
+
+# many rows
+INSERT INTO characters(name, homeland, favorite_color)
+VALUES('Mario', 'Mushroom Kingdom', 'Red'),
+('Luigi', 'Mushroom Kingdom', 'Green'),
+('Peach', 'Mushroom Kingdom', 'Pink');
 ```
 
 - Select column
@@ -71,3 +97,4 @@ DELETE FROM table_name WHERE condition;
 ```
 DROP TABLE table_name;
 ```
+
