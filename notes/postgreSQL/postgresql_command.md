@@ -65,6 +65,18 @@ ALTER TABLE table_name DROP COLUMN column_name;
 ALTER TABLE table_name RENAME COLUMN column_name TO new_name;
 ```
 
+- Add primary key to existing table
+
+```
+ALTER TABLE table_name ADD PRIMARY KEY(column_name);
+```
+
+- Update table
+
+```
+UPDATE table_name SET column_name=new_value WHERE condition;
+```
+
 - Insert rows
 
 ```
@@ -91,6 +103,7 @@ SELECT columns FROM table_name;
 ```
 DELETE FROM table_name WHERE condition;
 ```
+
 
 - Drop table
 
