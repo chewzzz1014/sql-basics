@@ -9,6 +9,10 @@ psql --username=XXXX --dbname=XXXX
 - `\c database_name`: Connect to database. Connection is particular to database. Thus, this command will close old connection and acquire new connection using the specified database.
 - `\d`: Display tables in database. `\d table_name` to view details (like columns, datatype etc) about a specific table.
 
+## Datatype
+- INT
+- VARCHAR(length): Specify max length
+
 ## SQL ( always end with ; )
 
 - Create database
@@ -33,6 +37,24 @@ ALTER TABLE table_name ADD COLUMN column_name DATATYPE;
 
 ```
 ALTER TABLE table_name DROP COLUMN column_name;
+```
+
+- Rename column
+
+```
+ALTER TABLE table_name RENAME COLUMN column_name TO new_name;
+```
+
+- Insert rows
+
+```
+INSERT INTO table_name(col_1, col_2...) VALUES (value_1, value_2...);
+```
+
+- Select column
+
+```
+SELECT columns FROM table_name;
 ```
 
 
