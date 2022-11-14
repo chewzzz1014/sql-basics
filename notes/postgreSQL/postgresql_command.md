@@ -49,6 +49,9 @@ ALTER TABLE table_name RENAME COLUMN column_name TO new_name;
 
 ```
 INSERT INTO table_name(col_1, col_2...) VALUES (value_1, value_2...);
+
+# fill in all columns
+INSERT INTO table_name VALUES (value_1, value_2...);
 ```
 
 - Select column
@@ -57,4 +60,14 @@ INSERT INTO table_name(col_1, col_2...) VALUES (value_1, value_2...);
 SELECT columns FROM table_name;
 ```
 
+- Delete row
 
+```
+DELETE FROM table_name WHERE condition;
+```
+
+- Drop table
+
+```
+DROP TABLE table_name;
+```
