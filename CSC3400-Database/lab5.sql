@@ -1,6 +1,6 @@
 -- Q1
 SELECT 
-    COUNT(UNIQUE department_name) unique_department
+    COUNT (UNIQUE department_name) unique_department
 FROM departments;
 
 -- Q2
@@ -77,4 +77,25 @@ GROUP BY d.department_id;
 
 
 -- Q10
+SELECT 
+    manager_id,
+    MIN(salary) min_salary
+FROM employees
+WHERE manager_id IS NOT NULL
+GROUP BY manager_id
+HAVING MIN(salary)>6000
+ORDER BY min_salary DESC;
 
+-- Q11
+SELECT
+    job_title,
+    d.department_id,
+    salary,
+    SUM(salary) total_salary
+FROM departments d
+JOIN employees e
+    ON d.department_id = e.department_id
+JOIN jobs j
+    ON j.job_id = e.job_id
+WHERE d.department_id IN (20, 50, 80, 90)
+GROUP BY job_title, d.department_id, salary;
