@@ -1,6 +1,6 @@
 -- Q1
 SELECT 
-    COUNT (UNIQUE department_name) unique_department
+    COUNT(UNIQUE department_name) num_unique_department
 FROM departments;
 
 -- Q2
@@ -14,22 +14,20 @@ GROUP BY d.department_id;
 
 -- Q3
 SELECT 
-    employee_id, 
-    MAX(salary) 'Maximum',
-    MIN(salary) 'Minimum',
-    SUM(salary) 'Sum',
-    AVG(salary) 'Average'
-FROM employees
-GROUP BY employee_id;
+    ROUND(MAX(salary)) AS Maximum,
+    ROUND(MIN(salary)) AS Minimum,
+    ROUND(SUM(salary)) AS Sum,
+    ROUND(AVG(salary)) AS Average
+FROM employees;
 
 
 -- Q4
 SELECT 
     job_title, 
-    MAX(salary) 'Maximum',
-    MIN(salary) 'Minimum',
-    SUM(salary) 'Sum',
-    AVG(salary) 'Average'
+    ROUND(MAX(salary)) AS Maximum,
+    ROUND(MIN(salary)) AS Minimum,
+    ROUND(SUM(salary)) AS Sum,
+    ROUND(AVG(salary)) AS Average
 FROM employees e
 JOIN jobs j
     ON e.job_id = j.job_id
@@ -88,9 +86,8 @@ ORDER BY min_salary DESC;
 
 -- Q11
 SELECT
-    job_title,
-    d.department_id,
-    salary,
+    job_title job,
+    d.department_id department_id,
     SUM(salary) total_salary
 FROM departments d
 JOIN employees e
@@ -98,4 +95,4 @@ JOIN employees e
 JOIN jobs j
     ON j.job_id = e.job_id
 WHERE d.department_id IN (20, 50, 80, 90)
-GROUP BY job_title, d.department_id, salary;
+GROUP BY job_title, d.department_id;
