@@ -17,6 +17,15 @@ psql -U postgres
 \dt
 ```
 
+## List Attributes in table
+```
+\d+ <table name>
+
+(or)
+
+\d <table name>
+```
+
 ## Create User and Database
 ```
 CREATE USER <username> WITH PASSWORD '<password>';
