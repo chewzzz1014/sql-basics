@@ -4,6 +4,11 @@
 ```
 psql --username=XXXX --dbname=XXXX
 ```
+
+```
+psql <dbname> <username>
+```
+
 ## Basics
 - `\l`: List all database
 - `\c database_name`: Connect to database. Connection is particular to database. Thus, this command will close old connection and acquire new connection using the specified database.
