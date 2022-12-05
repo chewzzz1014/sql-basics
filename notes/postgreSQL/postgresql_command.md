@@ -77,7 +77,7 @@ ALTER TABLE table_name RENAME COLUMN column_name TO new_name;
 
 ```
 ALTER TABLE table_name ADD PRIMARY KEY(column_name);
-ALTER TABLE table_name ADD COLUMN column_name DATATYPE REFERENCES referenced_table_name(referenced_column_name);
+ALTER TABLE table_name ADD FOREIGN KEY (column_name) REFERENCES referenced_table_name(referenced_column_name);
 ```
 
 - Add / edit constraint to existing table
