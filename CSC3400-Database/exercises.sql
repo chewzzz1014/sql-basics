@@ -10,9 +10,9 @@ ORDER BY first_name;
 -- 2
 SELECT 
     department_name "Department Name",
-    j.department_id "No of Department"
+    COUNT(*) "No of Department"
 FROM job_history j
 JOIN departments d
     ON j.department_id = d.department_id
-GROUP BY department_name, j.department_id
+GROUP BY department_name
 HAVING COUNT(*)>1;
