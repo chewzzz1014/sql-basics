@@ -16,3 +16,12 @@ JOIN departments d
     ON j.department_id = d.department_id
 GROUP BY department_name
 HAVING COUNT(*)>1;
+
+-- alternative of using JOIN
+SELECT 
+    department_name "Department Name",
+    COUNT(*) "No of Department"
+FROM job_history j, departments d
+WHERE j.department_id = d.department_id
+GROUP BY department_name
+HAVING COUNT(*)>1;
