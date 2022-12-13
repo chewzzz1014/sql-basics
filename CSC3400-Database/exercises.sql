@@ -28,5 +28,10 @@ HAVING COUNT(*)>1;
 
 
 -- 3
-SELECT SUBSTR(phone_number, 0, 3) "Phone Number"
+SELECT 
+    employee_id,
+    last_name,
+    SUBSTR(phone_number, 0, 3) || '-' || REPLACE(SUBSTR(phone_number, 5), '.', '') "Phone Number"
 FROM employees;
+
+select phone_number from employees;
