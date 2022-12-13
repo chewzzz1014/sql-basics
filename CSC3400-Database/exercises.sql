@@ -25,3 +25,8 @@ FROM job_history j, departments d
 WHERE j.department_id = d.department_id
 GROUP BY department_name
 HAVING COUNT(*)>1;
+
+
+-- 3
+SELECT SUBSTR(phone_number, 0, 3) "Phone Number"
+FROM employees;
