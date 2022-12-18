@@ -67,6 +67,13 @@ WHERE lname = 'Gopal';
 DELETE FROM self_employee
 WHERE empid = 4;
 
+-- include ' in the literal string
+select lname || q'['s Money]'
+from self_employee;
+
+-- prompt the use for value
+select * from self_employee
+where dept_id = &dept_id;
 
 
 
