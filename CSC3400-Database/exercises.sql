@@ -31,7 +31,14 @@ HAVING COUNT(*)>1;
 SELECT 
     employee_id,
     last_name,
-    SUBSTR(phone_number, 0, 3) || '-' || REPLACE(SUBSTR(phone_number, 5), '.', '') "Phone Number"
+    SUBSTR(phone_number, 1, 3) || '-' || SUBSTR(phone_number, 5, 3) || SUBSTR(phone_number, 9, 3) AS Phone
 FROM employees;
 
-select phone_number from employees;
+SELECT 
+    employee_id,
+    last_name,
+      CASE WHEN SUBSTR(phone_number, 1, 3)='011'
+        THEN SUBSTR(phone_number, 1, 3) || '-' || SUBSTR(phone_number, 5, 3) || SUBSTR(phone_number, 9, 4)
+      ELSE SUBSTR(phone_number, 1, 3)|| '-' || SUBSTR(phone_number, 5, 3) || SUBSTR(phone_number,9) 
+      END as phone
+FROM employees;
