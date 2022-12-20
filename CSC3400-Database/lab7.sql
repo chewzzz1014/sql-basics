@@ -48,4 +48,4 @@ CREATE SEQUENCE supplier_seq
 INSERT INTO supplier
 VALUES(supplier_seq.NEXTVAL,'Kraft Foods');
 
-
+SELECT * FROM supplier;
