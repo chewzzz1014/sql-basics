@@ -32,4 +32,20 @@ SELECT * FROM dept_50;
 
 
 -- Sequence
+CREATE TABLE supplier(
+    supplierid NUMBER(3),
+    supplier_name VARCHAR2(30),
+    CONSTRAINT supplierpk PRIMARY KEY(supplierid)
+);
+
+-- Q1
+CREATE SEQUENCE supplier_seq
+    INCREMENT BY 1
+    START WITH 1
+    MAXVALUE 20;
+    
+-- Q2: Get next num from supplier_seq and add to table
+INSERT INTO supplier
+VALUES(supplier_seq.NEXTVAL,'Kraft Foods');
+
 
