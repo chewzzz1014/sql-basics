@@ -73,3 +73,24 @@ where sequence_name = 'CUSTOMERIDSEQ';
 
 -- Q14
 DROP SEQUENCE CustomerIDSeq;
+
+-- Q15
+CREATE INDEX custphone_idx
+ON customer(custphone);
+
+-- Q16
+SELECT 
+    ic.index_name,
+    ic.column_name,
+    ic.column_position col_pos,
+    ix.uniqueness
+FROM
+    user_indexes ix,
+    user_ind_columns ic
+WHERE
+    ic.index_name=ix.index_name
+    AND
+    ic.table_name='CUSTOMER';
+    
+-- Q17
+DROP INDEX custphone_idx;
