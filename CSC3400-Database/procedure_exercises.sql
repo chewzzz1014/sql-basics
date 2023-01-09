@@ -29,3 +29,7 @@ BEGIN
     -- return the total sales
     RETURN total;
 END;
+
+SELECT 
+    totalCustomers()
+FROM dual;
