@@ -15,6 +15,8 @@ dbms_output.put_line (greetings);
 END hello;
 
 -- create function
+SELECT * FROM fatimahcd.customers;
+
 CREATE OR REPLACE FUNCTION totalCustomers
 RETURN NUMBER
 IS
@@ -23,8 +25,7 @@ BEGIN
     -- select total numbers of customers
     SELECT COUNT(*)
     INTO total
-    FROM customers;
-    
+    FROM fatimahcd.customers;
     -- return the total sales
     RETURN total;
 END;
