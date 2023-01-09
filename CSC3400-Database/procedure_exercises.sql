@@ -33,3 +33,10 @@ END;
 SELECT 
     totalCustomers()
 FROM dual;
+
+DECLARE
+    c NUMBER(2):= 0;
+BEGIN
+    c := totalCustomers();
+    DBMS_OUTPUT.PUT_LINE('Total no. of Customers: ": ' || c);
+END;
