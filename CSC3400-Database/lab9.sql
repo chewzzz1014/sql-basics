@@ -16,3 +16,14 @@ BEGIN
     ans := add_two_value(a, b);
     DBMS_OUTPUT.PUT_LINE('Total of 2 and 5 is: ' || ans);
 END;
+
+-- Q2
+CREATE OR REPLACE PROCEDURE raise_amount (id VARCHAR, amount NUMBER)
+AS
+BEGIN
+    UPDATE
+        employees
+    SET
+        salary = salary * (1+amount)
+    WHERE employee_id = id;
+END;
