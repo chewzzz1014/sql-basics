@@ -28,6 +28,18 @@ BEGIN
     WHERE employee_id = id;
 END;
 
+-- Q4
+CREATE OR REPLACE VIEW dept50 
+AS
+    SELECT employee_id empno,
+    last_name employee,
+    department_id deptno
+    FROM employees
+    WHERE department_id = 50
+WITH CHECK OPTION CONSTRAINT deptno50_v;
+
+SELECT * FROM dept50;
+
 -- Q6
 CREATE OR REPLACE FUNCTION return_total_salary(dept_id NUMBER)
 RETURN NUMBER
