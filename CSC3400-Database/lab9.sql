@@ -1,4 +1,4 @@
--- Q1
+-- Q1 (done)
 CREATE OR REPLACE FUNCTION add_two_value (n1 number, n2 number)
 RETURN NUMBER
 IS 
@@ -28,7 +28,35 @@ BEGIN
     WHERE employee_id = id;
 END;
 
--- Q4
+-- Q3
+CREATE OR REPLACE PROCEDURE DisplayEmployeeInfo(EmpNum NUMBER)
+IS
+    name VARCHAR := '';
+    position VARCHAR := '';
+    salary NUMBER := 0;
+BEGIN
+   SELECT 
+   first_name INTO name
+   FROM employees
+   WHERE employee_id = EmpNum;
+   SELECT 
+   job_id INTO position
+   FROM employees
+   WHERE employee_id = EmpNum;
+   SELECT 
+   salary INTO salary
+   FROM employees
+   WHERE employee_id = EmpNum;
+   dbms_output.put_line ('Employee Name :'|| name);
+   dbms_output.put_line ('Employee Position :'||position);
+   dbms_output.put_line ('Salary :' || salary);
+END;
+
+SELECT 
+    DisplayEmployeeInfo(100)
+FROM dual;
+
+-- Q4 (done)
 CREATE OR REPLACE VIEW dept50 
 AS
     SELECT employee_id empno,
@@ -40,7 +68,7 @@ WITH CHECK OPTION CONSTRAINT deptno50_v;
 
 SELECT * FROM dept50;
 
--- Q6
+-- Q6 (done)
 CREATE OR REPLACE FUNCTION return_total_salary(dept_id NUMBER)
 RETURN NUMBER
 IS
