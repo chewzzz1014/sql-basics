@@ -27,3 +27,21 @@ BEGIN
         salary = salary * (1+amount)
     WHERE employee_id = id;
 END;
+
+-- Q6
+CREATE OR REPLACE FUNCTION return_total_salary(dept_id NUMBER)
+RETURN NUMBER
+IS
+    total_salary NUMBER(8,2):=0;
+BEGIN 
+   SELECT SUM(salary)
+   INTO total_salary 
+   FROM employees
+   WHERE department_id = dept_id;
+
+   RETURN (total_salary);
+END;
+
+SELECT 
+    RETURN_TOTAL_SALARY(90)
+FROM dual;
