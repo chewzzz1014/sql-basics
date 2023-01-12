@@ -25,7 +25,7 @@ BEGIN
 END;
 
 BEGIN
-    raise_amount(100, 1);
+    raise_amount(100, 0.3);
 END;
 
 -- Q3 (done)
@@ -64,6 +64,23 @@ AS
 WITH CHECK OPTION CONSTRAINT deptno50_v;
 
 SELECT * FROM dept50;
+
+-- Q5
+CREATE TABLE audit_log_salary(
+    old_salary NUMBER(8, 2),
+    new_salary NUMBER(8, 2),
+    employee_id NUMBER(6, 0),
+    time_changes TIMESTAMP 
+);
+CREATE OR REPLACE TRIGGER trigger_salary
+AFTER INSERT OR UPDATE OR DELETE 
+OF salary
+ON employees
+FOR EACH ROW
+BEGIN
+      INSERT INTO audit_log_salary 
+            VALUES(:OLD.salary, :NEW.salary, :OLD.employee_id, SYSTIMESTAMP);
+END;
 
 -- Q6 (done)
 CREATE OR REPLACE FUNCTION return_total_salary(dept_id NUMBER)
