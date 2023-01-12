@@ -10,10 +10,8 @@ END;
 
 DECLARE
     ans NUMBER(2):= 0;
-    a NUMBER(2) := 2;
-    b NUMBER(2) := 5;
 BEGIN
-    ans := add_two_value(a, b);
+    ans := add_two_value(2, 5);
     DBMS_OUTPUT.PUT_LINE('Total of 2 and 5 is: ' || ans);
 END;
 
