@@ -28,33 +28,30 @@ BEGIN
     raise_amount(100, 1);
 END;
 
--- Q3
+-- Q3 (done)
+
 CREATE OR REPLACE PROCEDURE DisplayEmployeeInfo(EmpNum NUMBER)
-IS
-    name VARCHAR := '';
-    position VARCHAR := '';
-    salary NUMBER := 0;
+AS
+    c_name employees.first_name%type;
+    c_job employees.job_id%type;
+    c_salary employees.salary%type;
+    CURSOR c_employees 
+    IS
+        SELECT first_name, job_id, salary 
+        FROM employees
+        WHERE employee_id = EmpNum;
 BEGIN
-   SELECT 
-   first_name INTO name
-   FROM employees
-   WHERE employee_id = EmpNum;
-   SELECT 
-   job_id INTO position
-   FROM employees
-   WHERE employee_id = EmpNum;
-   SELECT 
-   salary INTO salary
-   FROM employees
-   WHERE employee_id = EmpNum;
-   dbms_output.put_line ('Employee Name :'|| name);
-   dbms_output.put_line ('Employee Position :'||position);
-   dbms_output.put_line ('Salary :' || salary);
+open c_employees;
+FETCH c_employees INTO c_name, c_job, c_salary;
+   dbms_output.put_line ('Employee Name :'|| c_name);
+   dbms_output.put_line ('Employee Position :'||c_job);
+   dbms_output.put_line ('Salary :' || c_salary);
+close c_employees;
 END;
 
-SELECT 
-    DisplayEmployeeInfo(100)
-FROM dual;
+BEGIN 
+    DisplayEmployeeInfo(100);
+END;
 
 -- Q4 (done)
 CREATE OR REPLACE VIEW dept50 
