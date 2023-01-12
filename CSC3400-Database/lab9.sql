@@ -8,14 +8,12 @@ BEGIN
     RETURN result;
 END;
 
-DECLARE
-    ans NUMBER(2):= 0;
-BEGIN
-    ans := add_two_value(2, 5);
-    DBMS_OUTPUT.PUT_LINE('Total of 2 and 5 is: ' || ans);
-END;
+SELECT
+    add_two_value(2, 5)
+FROM DUAL;
 
--- Q2
+
+-- Q2 (done)
 CREATE OR REPLACE PROCEDURE raise_amount (id VARCHAR, amount NUMBER)
 AS
 BEGIN
@@ -24,6 +22,10 @@ BEGIN
     SET
         salary = salary * (1+amount)
     WHERE employee_id = id;
+END;
+
+BEGIN
+    raise_amount(100, 1);
 END;
 
 -- Q3
