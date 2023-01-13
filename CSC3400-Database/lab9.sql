@@ -70,6 +70,7 @@ CREATE TABLE audit_log_salary(
     old_salary NUMBER(8, 2),
     new_salary NUMBER(8, 2),
     employee_id NUMBER(6, 0),
+    data_chages DATE,
     time_changes TIMESTAMP 
 );
 CREATE OR REPLACE TRIGGER trigger_salary
@@ -79,7 +80,7 @@ ON employees
 FOR EACH ROW
 BEGIN
       INSERT INTO audit_log_salary 
-            VALUES(:OLD.salary, :NEW.salary, :OLD.employee_id, SYSTIMESTAMP);
+            VALUES(:OLD.salary, :NEW.salary, :OLD.employee_id, SYSDATE, SYSTIMESTAMP);
 END;
 
 -- Q6 (done)
