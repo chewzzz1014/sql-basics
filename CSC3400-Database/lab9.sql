@@ -83,6 +83,8 @@ BEGIN
             VALUES(:OLD.salary, :NEW.salary, :OLD.employee_id, SYSDATE, SYSTIMESTAMP);
 END;
 
+select * from audit_log_salary;
+
 -- Q6 (done)
 CREATE OR REPLACE FUNCTION return_total_salary(dept_id NUMBER)
 RETURN NUMBER
