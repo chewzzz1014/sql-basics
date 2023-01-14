@@ -116,7 +116,7 @@ BEGIN
             END IF;
         END LOOP;
         cgpa := c_point / c_credit;
-        INSERT INTO student_cgpa VALUES (s1.matric, ROUND(cgpa));
+        INSERT INTO student_cgpa VALUES (s1.matric, ROUND(cgpa, 2));
         -- dbms_output.put_line (s1.matric || ' ' || c_point/c_credit);
     END LOOP;
 END;
@@ -126,3 +126,24 @@ BEGIN
 END;
 
 SELECT * FROM student_cgpa;
+
+
+-- Q4
+CREATE TABLE deans_list(
+    matric NUMBER,
+    cgpa NUMBER
+);
+
+-- DROP TABLE deans_list;
+
+CREATE OR REPLACE TRIGGER deans_list_trigger
+AFTER
+INSERT 
+ON student_cgpa
+FOR EACH ROW
+WHEN (NEW.cgpa >= 3.75)
+BEGIN
+    INSERT INTO deans_list VALUES(:NEW.matric, :NEW.cgpa);
+END;
+
+SELECT * FROM deans_list;
