@@ -141,4 +141,38 @@ DELETE FROM student_cgpa;
 DELETE FROM student_gpa;
 
 -- Q6
-INSERT INTO 
+insert into registration values 
+    (222222,'CSC3100','SEM 1 2021-2022','A',3);
+insert into registration values 
+    (222222,'CSC5500','SEM 1 2021-2022','B+',3);
+insert into registration values 
+    (222222,'CSC4402','SEM 1 2021-2022','C-',3);
+insert into registration values 
+    (222222,'CSC4400','SEM 1 2021-2022','A',3);
+
+BEGIN
+    calculate_gpa();
+    calculate_cgpa();
+END;
+
+SELECT * FROM student_gpa;
+SELECT * FROM student_cgpa;
+SELECT * FROM deans_list;
+
+-- Q7
+CREATE TABLE pa_monitoring_list(
+    matric NUMBER,
+    cgpa NUMBER
+);
+
+-- DROP TABLE pa_monitoring_list;
+
+CREATE OR REPLACE TRIGGER acedemic_problem
+AFTER
+INSERT 
+ON student_gpa
+FOR EACH ROW
+WHEN (NEW.gpa <= 2)
+BEGIN
+    INSERT INTO deans_list VALUES(:NEW.matric, :NEW.gpa);
+END;
