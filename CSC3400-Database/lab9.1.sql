@@ -62,7 +62,6 @@ BEGIN
             gpa := total_grade_point / total_credit;
             INSERT INTO student_gpa VALUES (s1.matric, s1.sem_session, ROUND(gpa, 2), total_credit);
     END LOOP;
-    dbms_output.put_line (total_credit);
 END;
     
 BEGIN
@@ -70,3 +69,60 @@ BEGIN
 END;
 
 SELECT * FROM student_gpa;
+
+-- Q3
+CREATE TABLE student_cgpa(
+    matric NUMBER,
+    cgpa NUMBER
+);
+
+-- DROP TABLE student_cgpa;
+
+CREATE OR REPLACE PROCEDURE calculate_cgpa
+AS
+    c_point NUMBER;
+    c_credit NUMBER;
+    cgpa NUMBER;
+    CURSOR student
+    IS
+        SELECT * FROM registration;
+    CURSOR student_info
+    IS
+        SELECT DISTINCT matric FROM student_gpa;
+BEGIN
+    FOR s1 IN student_info
+    LOOP
+        c_point := 0;
+        c_credit := 0;
+        cgpa := 0;
+        FOR s2 IN student
+        LOOP
+            IF (s1.matric = s2.matric)
+            THEN
+                CASE s2.grade
+                    WHEN 'A' THEN c_point := c_point + (4*s2.credit);
+                    WHEN 'A-' THEN c_point := c_point + 3.75*s2.credit;
+                    WHEN 'B+' THEN c_point := c_point + 3.5*s2.credit;
+                    WHEN 'B' THEN c_point := c_point + 3*s2.credit;
+                    WHEN 'B-' THEN c_point := c_point + 2.75*s2.credit;
+                    WHEN 'C+' THEN c_point := c_point + 2.5*s2.credit;
+                    WHEN 'C' THEN c_point := c_point + 2*s2.credit;
+                    WHEN 'C-' THEN c_point := c_point + 1.75*s2.credit;
+                    WHEN 'D+' THEN c_point := c_point + 1.5*s2.credit;
+                    WHEN 'D' THEN c_point := c_point + 1*s2.credit;
+                    ELSE c_point := c_point + 0*s2.credit;
+                END CASE;
+                c_credit := c_credit + s2.credit;
+            END IF;
+        END LOOP;
+        cgpa := c_point / c_credit;
+        INSERT INTO student_cgpa VALUES (s1.matric, ROUND(cgpa));
+        -- dbms_output.put_line (s1.matric || ' ' || c_point/c_credit);
+    END LOOP;
+END;
+
+BEGIN
+    calculate_cgpa();
+END;
+
+SELECT * FROM student_cgpa;
