@@ -21,6 +21,7 @@ CREATE TABLE student_gpa(
 
 CREATE OR REPLACE PROCEDURE calculate_gpa
 AS
+    var_point NUMBER := 0;
     total_credit NUMBER := 0;
     total_grade_point NUMBER := 0;
     gpa NUMBER := 0;
@@ -44,19 +45,11 @@ BEGIN
         LOOP
             IF(s2.matric = s1.matric AND s2.sem_session = s1.sem_session)
             THEN
-                CASE s2.grade
-                    WHEN 'A' THEN total_grade_point := total_grade_point + (4*s2.credit);
-                    WHEN 'A-' THEN total_grade_point := total_grade_point + 3.75*s2.credit;
-                    WHEN 'B+' THEN total_grade_point := total_grade_point + 3.5*s2.credit;
-                    WHEN 'B' THEN total_grade_point := total_grade_point + 3*s2.credit;
-                    WHEN 'B-' THEN total_grade_point := total_grade_point + 2.75*s2.credit;
-                    WHEN 'C+' THEN total_grade_point := total_grade_point + 2.5*s2.credit;
-                    WHEN 'C' THEN total_grade_point := total_grade_point + 2*s2.credit;
-                    WHEN 'C-' THEN total_grade_point := total_grade_point + 1.75*s2.credit;
-                    WHEN 'D+' THEN total_grade_point := total_grade_point + 1.5*s2.credit;
-                    WHEN 'D' THEN total_grade_point := total_grade_point + 1*s2.credit;
-                    ELSE total_grade_point := total_grade_point + 0*s2.credit;
-                END CASE;
+                SELECT
+                    point INTO var_point
+                    FROM grade_point
+                    WHERE grade = s2.grade;
+                total_grade_point := total_grade_point + (var_point*s2.credit);
             END IF;
         END LOOP;
             gpa := total_grade_point / total_credit;
@@ -83,6 +76,7 @@ AS
     c_point NUMBER;
     c_credit NUMBER;
     cgpa NUMBER;
+    var_point NUMBER;
     CURSOR student
     IS
         SELECT * FROM registration;
@@ -99,19 +93,11 @@ BEGIN
         LOOP
             IF (s1.matric = s2.matric)
             THEN
-                CASE s2.grade
-                    WHEN 'A' THEN c_point := c_point + (4*s2.credit);
-                    WHEN 'A-' THEN c_point := c_point + 3.75*s2.credit;
-                    WHEN 'B+' THEN c_point := c_point + 3.5*s2.credit;
-                    WHEN 'B' THEN c_point := c_point + 3*s2.credit;
-                    WHEN 'B-' THEN c_point := c_point + 2.75*s2.credit;
-                    WHEN 'C+' THEN c_point := c_point + 2.5*s2.credit;
-                    WHEN 'C' THEN c_point := c_point + 2*s2.credit;
-                    WHEN 'C-' THEN c_point := c_point + 1.75*s2.credit;
-                    WHEN 'D+' THEN c_point := c_point + 1.5*s2.credit;
-                    WHEN 'D' THEN c_point := c_point + 1*s2.credit;
-                    ELSE c_point := c_point + 0*s2.credit;
-                END CASE;
+                SELECT
+                    point INTO var_point
+                    FROM grade_point
+                    WHERE grade = s2.grade;
+                c_point := c_point + (var_point*s2.credit);
                 c_credit := c_credit + s2.credit;
             END IF;
         END LOOP;
@@ -147,3 +133,12 @@ BEGIN
 END;
 
 SELECT * FROM deans_list;
+
+
+-- Q5
+DELETE FROM deans_list;
+DELETE FROM student_cgpa;
+DELETE FROM student_gpa;
+
+-- Q6
+INSERT INTO 
