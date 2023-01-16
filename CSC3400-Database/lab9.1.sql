@@ -91,6 +91,20 @@ CREATE TABLE student_cgpa(
 
 -- DROP TABLE student_cgpa;
 
+-- answer
+CREATE OR REPLACE procedure calculate_cgpa_ans AS
+BEGIN
+    INSERT INTO student_cgpa (matric, cgpa)
+    SELECT
+        matric,
+        SUM(gpa*total_credit) / SUM(total_credit) AS cgpa
+    FROM student_gpa
+    GROUP BY matric;
+END;
+
+execute calculate_cgpa;
+
+-- my solution
 CREATE OR REPLACE PROCEDURE calculate_cgpa
 AS
     c_point NUMBER;
