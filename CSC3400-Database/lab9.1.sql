@@ -20,6 +20,24 @@ CREATE TABLE student_gpa(
 
 -- DROP TABLE student_gpa;
 
+-- ans: shorter version!
+CREATE OR REPLACE PROCEDURE calculate_gpa_ans
+IS 
+BEGIN
+INSERT INTO student_gpa(matric, sem_session, gpa, total_credit)
+SELECT
+	matric,
+	sem_session,
+	ROUND((sum(point*credit)/sum(credit)), 2) gpa,
+	sum(credit) total_credit
+FROM registration_grade_point
+GROUP BY matric, sem_session;
+END;
+
+EXEC calculate_gpa_ans;
+SELECT * FROM student_gpa;
+
+-- my solution
 CREATE OR REPLACE PROCEDURE calculate_gpa
 AS
     var_point NUMBER := 0;
