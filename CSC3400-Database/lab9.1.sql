@@ -195,7 +195,7 @@ SELECT * FROM deans_list;
 
 -- Q7
 CREATE TABLE pa_monitoring_list(
-    matric NUMBER,
+    matric NUMBER PRIMARY KEY,
     cgpa NUMBER
 );
 
@@ -204,9 +204,9 @@ CREATE TABLE pa_monitoring_list(
 CREATE OR REPLACE TRIGGER acedemic_problem
 AFTER
 INSERT 
-ON student_gpa
+ON student_cgpa
 FOR EACH ROW
-WHEN (NEW.gpa <= 2)
+WHEN (NEW.cgpa <= 2)
 BEGIN
-    INSERT INTO deans_list VALUES(:NEW.matric, :NEW.gpa);
+    INSERT INTO pa_monitoring_list VALUES(:NEW.matric, :NEW.gpa);
 END;
