@@ -14,7 +14,8 @@ CREATE TABLE student_gpa(
     matric NUMBER,
     sem_session VARCHAR2(20),
     gpa NUMBER(4, 2),
-    total_credit NUMBER
+    total_credit NUMBER,
+    CONSTRAINT student_gpa_pk PRIMARY KEY (matric, sem_session)
 );
 
 -- DROP TABLE student_gpa;
@@ -66,7 +67,8 @@ SELECT * FROM student_gpa;
 -- Q3
 CREATE TABLE student_cgpa(
     matric NUMBER,
-    cgpa NUMBER
+    cgpa NUMBER,
+    CONSTRAINT student_gpa_pk PRIMARY KEY matric
 );
 
 -- DROP TABLE student_cgpa;
